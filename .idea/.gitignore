@@ -6,4 +6,7 @@ shelf/
 httpRequests/
 *.iml
 out/
+
+# honestly i dont know if either works so i'll use both :P
 *.txt
+src/Inputs/
