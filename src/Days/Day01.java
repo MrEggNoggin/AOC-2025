@@ -1,4 +1,5 @@
 // Completed 37:41.42 (more like 37:30 - 37:40 because i was celebrating lol)
+// Part 1 Completed in ~32 Minutes
 // Completed on December 1, 2025, starting at 3:58 PM
 // NOTES
 // i got the part 2 solution right before i got the part 1 solution right ;-;
