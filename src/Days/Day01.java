@@ -26,7 +26,7 @@ public class Day01 {
         for (int i = 0; i < input.size(); i++) {
             int rotations = Integer.parseInt(input.get(i).substring(1));
             boolean direction = input.get(i).substring(0, 1).contains("R");
-            int[] output = dialer(direction, rotations, dial, true);
+            int[] output = dialer(direction, rotations, dial, false);
             dial = output[0];
             zeroCount += output[1];
         }
@@ -35,7 +35,18 @@ public class Day01 {
     }
 
     public static void partTwo(ArrayList<String> input) {
+        int dial = 50;
+        int zeroCount = 0;
 
+        for (int i = 0; i < input.size(); i++) {
+            int rotations = Integer.parseInt(input.get(i).substring(1));
+            boolean direction = input.get(i).substring(0, 1).contains("R");
+            int[] output = dialer(direction, rotations, dial, true);
+            dial = output[0];
+            zeroCount += output[1];
+        }
+
+        System.out.println(zeroCount);
     }
 
     private static int[] dialer(boolean direction, int rotations, int dial, boolean modified) {
@@ -60,7 +71,6 @@ public class Day01 {
                 zeroCount++;
             }
         }
-        System.out.println(newDial);
         if (newDial == 0 && !modified) {
             zeroCount += 1;
         }
