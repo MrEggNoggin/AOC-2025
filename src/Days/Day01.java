@@ -4,7 +4,7 @@
 // NOTES
 // i got the part 2 solution right before i got the part 1 solution right ;-;
 // im happy i was able to fit everything inside of dialer and not a new function
-// im gonna clean this up more so that the parts are separate but im happy with my completion time!
+// im gonna clean this up more so that the parts are separate (<-- did that) but im happy with my completion time!
 
 package Days;
 
