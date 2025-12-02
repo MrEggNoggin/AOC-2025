@@ -1,6 +1,10 @@
+// TODO: replace EVERYTHING in this
+
 package Days;
 
 import Eggtils.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,7 +12,7 @@ public class Day02 {
 
     public static void run(String filePath) {
         ArrayList<String> input = InputLoader.loadInput(filePath);
-        partOne(input);
+        //partOne(input);
         partTwo(input);
     }
 
@@ -54,45 +58,118 @@ public class Day02 {
     }
 
     private static long invalidIDDetectorButReallyBruteforced(String idRange) {
-        long total = invalidIDDetector(idRange); // this doesn't feel right
+        long total = 0;
         String[] splitStringRange = idRange.split("-");
 
         long numOne = Long.parseLong(splitStringRange[0]);
         long numTwo = Long.parseLong(splitStringRange[1]);
 
         for (long i = numOne; i <= numTwo; i++) {
-            HashMap<Long, Long> seqTracker = new HashMap<>();
+            String numString = Long.toString(i);
 
-            String numString = "" + i;
             if (numString.length() % 2 == 0) {
-                for (int j = 0; j < numString.length() - 2; j+=2) {
-                    // TODO: there has to be a better way to do this
-                    seqTracker.putIfAbsent(Long.parseLong(numString.substring(j, j + 2)), (long)0);
-                    seqTracker.put(Long.parseLong(numString.substring(j, j + 2)), seqTracker.get(Long.parseLong(numString.substring(j, j + 2))) + 1);
-                }
-            } else if (numString.length() == 6 || numString.length() == 9 || numString.length() == 12) {
-                for (int j = 0; j < numString.length() - 3; j+=3) {
-                    // TODO: there has to be a better way to do this
-                    seqTracker.putIfAbsent(Long.parseLong(numString.substring(j, j + 3)), (long)0);
-                    seqTracker.put(Long.parseLong(numString.substring(j, j + 3)), seqTracker.get(Long.parseLong(numString.substring(j, j + 3))) + 1);
-                }
-            } else if (numString.length() == 12) {
-                for (int j = 0; j < numString.length() - 4; j+=4) {
-                    // TODO: there has to be a better way to do this
-                    seqTracker.putIfAbsent(Long.parseLong(numString.substring(j, j + 4)), (long)0);
-                    seqTracker.put(Long.parseLong(numString.substring(j, j + 4)), seqTracker.get(Long.parseLong(numString.substring(j, j + 4))) + 1);
-                }
+                long halveOne = Long.parseLong(numString.substring(0, numString.length() / 2));
+                long halveTwo = Long.parseLong(numString.substring(numString.length() / 2));
+                ArrayList<Long> numArray = new ArrayList<>();
 
-                for (int j = 0; j < numString.length() - 6; j+=6) {
-                    // TODO: there has to be a better way to do this
-                    seqTracker.putIfAbsent(Long.parseLong(numString.substring(j, j + 6)), (long)0);
-                    seqTracker.put(Long.parseLong(numString.substring(j, j + 6)), seqTracker.get(Long.parseLong(numString.substring(j, j + 6))) + 1);
+                 if (halveOne == halveTwo) {
+                     System.out.println(halveOne + " " + halveTwo);
+                     total += i;
+                     continue;
+                 }
+
+                 for (int j = 0; j < numString.length(); j++) {
+
+                 }
+            }
+
+            if (numString.length() == 3) {
+                long partOne = Long.parseLong(numString.substring(0, 1));
+                long partTwo = Long.parseLong(numString.substring(1,2));
+                long partThree = Long.parseLong(numString.substring(2));
+
+                if (partOne == partTwo && partTwo == partThree) {
+                    total += i;
+                    continue;
                 }
             }
-            for (long num : seqTracker.values()) {
-                if (num > 1) {
+
+            if (numString.length() == 5) {
+                long partOne = Long.parseLong(numString.substring(0, 1));
+                long partTwo = Long.parseLong(numString.substring(1,2));
+                long partThree = Long.parseLong(numString.substring(2, 3));
+                long partFour = Long.parseLong(numString.substring(3, 4));
+                long partFive = Long.parseLong(numString.substring(4));
+
+                if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive) {
                     total += i;
-                    break;
+                    continue;
+                }
+
+            }
+
+            if (numString.length() == 7) {
+                long partOne = Long.parseLong(numString.substring(0, 1));
+                long partTwo = Long.parseLong(numString.substring(1,2));
+                long partThree = Long.parseLong(numString.substring(2, 3));
+                long partFour = Long.parseLong(numString.substring(3, 4));
+                long partFive = Long.parseLong(numString.substring(4, 5));
+                long partSix = Long.parseLong(numString.substring(5, 6));
+                long partSeven = Long.parseLong(numString.substring(6));
+
+                if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive
+                && partFive == partSix && partSix == partSeven) {
+                    total += i;
+                    continue;
+                }
+            }
+
+            if (numString.length() == 9) {
+                long partOne = Long.parseLong(numString.substring(0, 1));
+                long partTwo = Long.parseLong(numString.substring(1, 2));
+                long partThree = Long.parseLong(numString.substring(2, 3));
+                long partFour = Long.parseLong(numString.substring(3, 4));
+                long partFive = Long.parseLong(numString.substring(4, 5));
+                long partSix = Long.parseLong(numString.substring(5, 6));
+                long partSeven = Long.parseLong(numString.substring(6, 7));
+                long partEight = Long.parseLong(numString.substring(7, 8));
+                long partNine = Long.parseLong(numString.substring(8));
+
+                long thirdOne = Long.parseLong(numString.substring(0, 3));
+                long thirdTwo = Long.parseLong(numString.substring(3, 6));
+                long thirdThree = Long.parseLong(numString.substring(6));
+
+                if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive
+                        && partFive == partSix && partSix == partSeven && partSeven == partEight && partEight == partNine) {
+                    total += i;
+                    continue;
+                }
+
+                if (thirdOne == thirdTwo && thirdTwo == thirdThree) {
+                    total += i;
+                    continue;
+                }
+
+            }
+
+            if (numString.length() == 11) {
+                long partOne = Long.parseLong(numString.substring(0, 1));
+                long partTwo = Long.parseLong(numString.substring(1, 2));
+                long partThree = Long.parseLong(numString.substring(2, 3));
+                long partFour = Long.parseLong(numString.substring(3, 4));
+                long partFive = Long.parseLong(numString.substring(4, 5));
+                long partSix = Long.parseLong(numString.substring(5, 6));
+                long partSeven = Long.parseLong(numString.substring(6, 7));
+                long partEight = Long.parseLong(numString.substring(7, 8));
+                long partNine = Long.parseLong(numString.substring(8, 9));
+                long partTen = Long.parseLong(numString.substring(9, 10));
+                long partEleven = Long.parseLong(numString.substring(10));
+
+                if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive
+                        && partFive == partSix && partSix == partSeven && partSeven == partEight && partEight == partNine
+                        && partNine == partTen && partTen == partEleven) {
+                    total += i;
+                    continue;
                 }
             }
         }
