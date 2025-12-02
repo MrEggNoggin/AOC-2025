@@ -1,4 +1,17 @@
-// TODO: replace EVERYTHING in this
+// Completed 1:55:51.20 (more like 1:55:47 but i was celebrating :D)
+// Part 1 Completed 14:57
+// Completed on December 2, 2025, starting at ~2:55 PM
+// NOTES
+// for some reason i got REALLY stuck on day 2 part 2, kind of like last year with golang
+// HOWEVER, i pushed through my dumbness this time and did it! hooray!
+// also i learned that ArrayList set() != ArrayList add(), probably should've look at the function descriptions a little closer...
+// this can 100% be cleaned up, there is no reason why this class needs to be 269 lines long.
+// i figured out by the end the set() and add() thing which caused an error before when i used set()
+// so instead of using for-loops like a regular person, i just hard coded all of it
+// so now that i know the difference, i can get rid of the giant blocks of variables! yipeee!
+// even though it took almost two hours, i'm glad i just stuck with it and got it done. :)
+
+// TODO: replace EVERYTHING in this, this might be the worst stuff ive ever written, but hey, it works!
 
 package Days;
 
