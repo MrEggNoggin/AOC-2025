@@ -70,16 +70,38 @@ public class Day02 {
             if (numString.length() % 2 == 0) {
                 long halveOne = Long.parseLong(numString.substring(0, numString.length() / 2));
                 long halveTwo = Long.parseLong(numString.substring(numString.length() / 2));
+                boolean equal = true;
                 ArrayList<Long> numArray = new ArrayList<>();
 
                  if (halveOne == halveTwo) {
-                     System.out.println(halveOne + " " + halveTwo);
+                     System.out.println(i);
+
                      total += i;
                      continue;
                  }
 
-                 for (int j = 0; j < numString.length(); j++) {
+                 if (numString.length() == 2) {
+                     continue;
+                 }
 
+                 for (int j = 0; j < numString.length() - 1; j+=2) {
+                     numArray.add(Long.parseLong(numString.substring(j, j+2)));
+                 }
+
+                 for (int j = 0; j < numArray.size() - 1; j++) {
+                     for (int k = j; k < numArray.size(); k++) {
+                         if (!numArray.get(j).equals(numArray.get(k))) {
+                             equal = false;
+                             break;
+                         }
+                     }
+                 }
+
+                 if (equal) {
+                     total += i;
+                     System.out.println(i);
+
+                     continue;
                  }
             }
 
@@ -90,6 +112,8 @@ public class Day02 {
 
                 if (partOne == partTwo && partTwo == partThree) {
                     total += i;
+                    System.out.println(i);
+
                     continue;
                 }
             }
@@ -103,6 +127,8 @@ public class Day02 {
 
                 if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive) {
                     total += i;
+                    System.out.println(i);
+
                     continue;
                 }
 
@@ -120,6 +146,8 @@ public class Day02 {
                 if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive
                 && partFive == partSix && partSix == partSeven) {
                     total += i;
+                    System.out.println(i);
+
                     continue;
                 }
             }
@@ -142,6 +170,8 @@ public class Day02 {
                 if (partOne == partTwo && partTwo == partThree && partThree == partFour && partFour == partFive
                         && partFive == partSix && partSix == partSeven && partSeven == partEight && partEight == partNine) {
                     total += i;
+                    System.out.println(i);
+
                     continue;
                 }
 
@@ -169,9 +199,60 @@ public class Day02 {
                         && partFive == partSix && partSix == partSeven && partSeven == partEight && partEight == partNine
                         && partNine == partTen && partTen == partEleven) {
                     total += i;
+                    System.out.println(i);
+
                     continue;
                 }
             }
+
+            if (numString.length() == 12) {
+                ArrayList<Long> numArray = new ArrayList<>();
+                boolean equal = true;
+
+                for (int j = 0; j < numString.length() - 2; j+=3) {
+                    numArray.add(Long.parseLong(numString.substring(j, j+3)));
+                }
+
+                for (int j = 0; j < numArray.size() - 1; j++) {
+                    for (int k = j; k < numArray.size(); k++) {
+                        if (!numArray.get(j).equals(numArray.get(k))) {
+                            equal = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (equal) {
+                    System.out.println(i);
+                    total += i;
+                    continue;
+                }
+            }
+
+            if (numString.length() == 12) {
+                ArrayList<Long> numArray = new ArrayList<>();
+                boolean equal = true;
+
+                for (int j = 0; j < numString.length() - 3; j+=4) {
+                    numArray.add(Long.parseLong(numString.substring(j, j+4)));
+                }
+
+                for (int j = 0; j < numArray.size() - 1; j++) {
+                    for (int k = j; k < numArray.size(); k++) {
+                        if (!numArray.get(j).equals(numArray.get(k))) {
+                            equal = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (equal) {
+                    System.out.println(i);
+                    total += i;
+                    continue;
+                }
+            }
+
         }
 
         return total;
