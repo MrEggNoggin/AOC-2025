@@ -1,3 +1,10 @@
+// Completed 2:05:21.84 (more like 2:05:10 but i was celebrating :))
+// Part 1 completed 20:16
+// Completed on December 3, 2025, start at ~2:50 PM
+// NOTES
+// i really thought i wouldn't be able to do this but i'm happy i pulled it off!
+// a drew a diagram near the end that helped me out a lot, i'm gonna do that for now on
+
 package Days;
 
 import Eggtils.*;
@@ -8,7 +15,7 @@ public class Day03 {
 
     public static void run(String filePath) {
         ArrayList<String> input = InputLoader.loadInput(filePath);
-        //partOne(input);
+        partOne(input);
         partTwo(input);
     }
 
@@ -45,7 +52,6 @@ public class Day03 {
             }
         }
 
-        System.out.println(max);
 
         return max;
     }
@@ -70,7 +76,6 @@ public class Day03 {
                 }
 
                 if (numberAtCurrentIndex > currentMax && j != index) {
-                    System.out.println(batteryBank.length() - inverseIndex[i]);
                     currentMax = numberAtCurrentIndex;
                     index = j;
                 }
@@ -86,7 +91,6 @@ public class Day03 {
 
         max = Long.parseLong(finalString);
 
-        System.out.println(max);
         return max;
     }
 }
