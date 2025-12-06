@@ -1,3 +1,6 @@
+// didnt complete part 2 of this, i will come back to it
+// Part 1 Complete: 33:52, December 6, 2025, current time: 50:48.38
+
 package Days;
 
 import Eggtils.*;
