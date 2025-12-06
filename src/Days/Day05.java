@@ -1,10 +1,17 @@
-// didnt complete part 2 of this, i will come back to it
-// Part 1 Complete: 33:52, December 6, 2025, current time: 50:48.38
+// Completed 1:53:41.90
+// Part 1 Complete: 33:52
+// Completed on December 6, 2025, starting at ~12:00 PM (i had to do other things)
+// NOTES
+// i'm glad got to the answer for part two, i wasn't going anywhere with it for a while
+// probably the hardest day so far, specifically part 2
 
 package Days;
 
 import Eggtils.*;
+
+import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Day05 {
@@ -42,23 +49,44 @@ public class Day05 {
     }
 
     public static void partTwo(ArrayList<String> input01, ArrayList<String> input02) {
+        record range(long bottom, long top) {}
         long total = 0;
-        long smallestBottom = -1;
-        long biggestTop = 0;
+        HashMap<Long, Long> newRanges = new HashMap<>();
+        ArrayList<range> ranges = new ArrayList<>();
+        ArrayList<Long> leftNums = new ArrayList<>();
+        ArrayList<Long> rightNums = new ArrayList<>();
 
         for (String line01 : input01) {
             String[] splitNums = line01.split("-");
-            Long[] nums = {Long.parseLong(splitNums[0]), Long.parseLong(splitNums[1])};
+            leftNums.add(Long.parseLong(splitNums[0]));
+            rightNums.add(Long.parseLong(splitNums[1]));
+        }
 
-            if (smallestBottom == -1 || nums[0] < smallestBottom) {
-                smallestBottom = nums[0];
-            }
+        Collections.sort(leftNums, Collections.reverseOrder());
+        Collections.sort(rightNums, Collections.reverseOrder());
 
-            if (biggestTop < nums[1]) {
-                biggestTop = nums[1];
+        for (int i = 0; i < leftNums.size(); i++) {
+            ranges.add(new range(leftNums.get(i), rightNums.get(i)));
+        }
+        for (int j = 0; j < 1000000; j++) {
+            for (int i = 0; i < ranges.size() - 1; i++) {
+                if (ranges.get(i).bottom >= ranges.get(i + 1).bottom && ranges.get(i).bottom <= ranges.get(i + 1).top) {
+                    ranges.set(i, new range(ranges.get(i + 1).bottom, ranges.get(i).top));
+                }
             }
         }
-        total = biggestTop - smallestBottom;
-        System.out.println(biggestTop + " "  + smallestBottom + " " + total);
+
+        for (range r : ranges) {
+            newRanges.putIfAbsent(r.bottom, 0L);
+            if (newRanges.get(r.bottom) < r.top) {
+                newRanges.put(r.bottom, r.top);
+            }
+        }
+
+        for (long key : newRanges.keySet()) {
+            total += newRanges.get(key) - key + 1;
+        }
+
+        System.out.println(total);
     }
 }
